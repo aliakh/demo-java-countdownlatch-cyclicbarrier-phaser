@@ -1,0 +1,13 @@
+@startuml
+
+!include class_diagram_header.iuml
+
+class CountDownLatch {
+	{method} +await(): void
+	{method} +await(timeout: long, unit: TimeUnit): boolean
+	{method} +countDown(): void
+	{method} +getCount(): long
+	{method} +toString(): String
+}
+
+@enduml

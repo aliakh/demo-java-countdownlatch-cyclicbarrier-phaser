@@ -1,0 +1,13 @@
+scale 1.0
+
+hide footbox
+
+!pragma teoz true
+
+skinparam monochrome true
+skinparam defaultFontName Source Sans Pro
+skinparam titleFontSize 15
+skinparam sequenceMessageAlign left
+skinparam participantBackgroundColor #white
+skinparam noteBackgroundColor #white
+skinparam sequenceGroupBackgroundColor #white

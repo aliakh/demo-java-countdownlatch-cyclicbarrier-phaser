@@ -1,0 +1,13 @@
+@startuml
+
+!include class_diagram_header.iuml
+
+class CyclicBarrier {
+	{method} +await(): int
+	{method} +await(timeout: long, unit: TimeUnit): int
+	{method} +getNumberWaiting(): int
+	{method} +isBroken(): boolean
+	{method} +reset(): void
+}
+
+@enduml

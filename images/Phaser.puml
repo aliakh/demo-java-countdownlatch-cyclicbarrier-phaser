@@ -1,0 +1,23 @@
+@startuml
+
+!include class_diagram_header.iuml
+
+class Phaser {
+	{method} +arrive(): int
+	{method} +arriveAndAwaitAdvance(): int
+	{method} +arriveAndDeregister(): int
+	{method} +awaitAdvance(phase: int): int
+	{method} +awaitAdvanceInterruptibly(phase: int): int
+	{method} +awaitAdvanceInterruptibly(phase: int, timeout: long, unit: TimeUnit): int
+	{method} +bulkRegister(registrations: int): int
+	{method} +forceTermination(): void
+	{method} +getArrivedParties(): int
+	{method} +getPhase(): int
+	{method} +getRegisteredParties(): int
+	{method} +getUnarrivedParties(): int
+	{method} +isTerminated(): boolean
+	{method} +register(): int
+	{method} +toString(): String
+}
+
+@enduml

@@ -1,0 +1,9 @@
+scale 1.2
+
+skinparam monochrome true
+skinparam ClassBackgroundColor white
+skinparam ClassBorderColor black
+
+skinparam ClassAttributeFontName Source Sans Pro
+skinparam ClassFontName Source Sans Pro
+skinparam ClassStereotypeFontName Source Sans Pro

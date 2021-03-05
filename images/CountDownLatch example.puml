@@ -1,0 +1,51 @@
+@startuml
+
+!include sequence_diagram_header.iuml
+
+participant "main" as main
+participant "thread 1" as thread1
+participant "thread 2" as thread2
+participant "thread 3" as thread3
+
+activate main
+activate thread1
+activate thread2
+activate thread3
+
+main->main: new CountDownLatch(3)
+
+note left
+getCount() == 3
+end note
+
+rnote over main
+the latch waits for 3 parties
+end note
+
+main->main: await()
+deactivate main
+
+||50||
+
+thread1 -> main: countDown()
+note left
+getCount() == 2
+end note
+
+thread2 -> main: countDown()
+note left
+getCount() == 1
+end note
+
+thread3 -> main: countDown()
+note left
+getCount() == 0
+end note
+
+activate main
+
+rnote over main
+a latch cannot be reused
+end note
+
+@enduml

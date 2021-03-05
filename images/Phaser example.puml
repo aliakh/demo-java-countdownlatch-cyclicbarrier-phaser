@@ -1,0 +1,77 @@
+@startuml
+
+!include sequence_diagram_header.iuml
+
+participant "main" as main
+participant "thread 1" as thread1
+participant "thread 2" as thread2
+participant "thread 3" as thread3
+
+activate main
+activate thread1
+activate thread2
+activate thread3
+
+main->main: new Phaser(1+3)
+
+note left
+getRegisteredParties() == 1
+getArrivedParties() == 0
+getUnarrivedParties() == 1
+end note
+
+main->main: bulkRegister(3)
+
+note left
+getRegisteredParties() == 4
+getArrivedParties() == 0
+getUnarrivedParties() == 4
+end note
+
+rnote over main
+the phaser waits for 4 parties
+end note
+
+main->main: arriveAndAwaitAdvance()
+
+note left
+getRegisteredParties() == 4
+getArrivedParties() == 1
+getUnarrivedParties() == 3
+end note
+
+deactivate main
+
+||50||
+
+thread1 -> main: arrive()
+
+note left
+getRegisteredParties() == 4
+getArrivedParties() == 2
+getUnarrivedParties() == 2
+end note
+
+thread2 -> main: arrive()
+
+note left
+getRegisteredParties() == 4
+getArrivedParties() == 3
+getUnarrivedParties() == 1
+end note
+
+thread3 -> main: arriveAndDeregister()
+
+note left
+getRegisteredParties() == 3
+getArrivedParties() == 0
+getUnarrivedParties() == 3
+end note
+
+activate main
+
+rnote over main
+the phaser waits for 3 parties
+end note
+
+@enduml
